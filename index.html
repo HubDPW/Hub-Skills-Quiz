@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Professional Skills Diagnostic</title>
+<style>
+   body { font-family: Arial, sans-serif; margin: 0; background:#f5f7fb; color:#1f2937; }
+   .wrap { max-width: 1100px; margin: 28px auto; background:#fff; padding: 32px; border-radius: 18px; box-shadow: 0 10px 28px rgba(0,0,0,0.08); }
+   h1,h2,h3 { margin-top: 0; }
+   .muted { color:#6b7280; }
+   .legend { font-size: 14px; margin: 14px 0 22px; }
+   .q { margin: 18px 0; padding: 18px; border:1px solid #e5e7eb; border-radius: 12px; }
+   .q h3 { font-size: 20px; margin-bottom: 8px; }
+   .scale { display:flex; gap:10px; flex-wrap: wrap; margin-top: 14px; }
+   .option { display:flex; align-items:center; gap:8px; padding:10px 14px; border:1px solid #d1d5db; border-radius:10px; background:#fafafa; cursor:pointer; }
+   .btn { background:#0f172a; color:#fff; border:0; padding:14px 18px; border-radius:10px; cursor:pointer; font-size:16px; }
+   .btn.secondary { background:#fff; color:#0f172a; border:1px solid #d1d5db; }
+   .warn { color:#b91c1c; margin-top: 12px; display:none; }
+   .result { display:none; margin-top: 28px; padding: 24px; border:1px solid #e5e7eb; border-radius: 14px; background:#f9fafb; }
+   .section-title { margin: 22px 0 10px; font-size: 18px; }
+   table { width:100%; border-collapse: collapse; margin-top: 12px; }
+   th, td { text-align:left; padding:10px; border-bottom:1px solid #e5e7eb; vertical-align: top; }
+   .pill { display:inline-block; padding:6px 10px; border-radius:999px; background:#e5eefc; margin:4px 8px 4px 0; font-size:14px; }
+   .bucket { margin: 14px 0 18px; padding: 14px 16px; border: 1px solid #e5e7eb; border-radius: 12px; background:#fff; }
+   .summary-grid { display:grid; grid-template-columns: repeat(3, 1fr); gap:14px; margin-top:12px; }
+   .summary-card { background:#fff; border:1px solid #e5e7eb; border-radius:12px; padding:14px; }
+   .actions { display:flex; gap:10px; flex-wrap: wrap; margin-top: 12px; }
+   .save-message { margin-top: 10px; color:#065f46; font-size:14px; }
+   @media (max-width: 760px) { .summary-grid { grid-template-columns: 1fr; } }
+   @media print {
+     body { background:#fff; }
+     .wrap { box-shadow:none; margin:0; max-width:none; border-radius:0; }
+     #surveyForm, .actions, .save-message, .legend, .muted { display:none !important; }
+     .result { display:block !important; border:0; padding:0; background:#fff; }
+   }
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>Professional Skills Diagnostic</h1>
+<p class="muted">Answer the 25 questions below. When you submit, the diagnostic scores all 25 capability areas and recommends courses from the combined skills and interpersonal skills catalogue.</p>
+<div class="legend"><strong>Scale:</strong> 1 = Very Low, 2 = Low, 3 = Moderate, 4 = Strong, 5 = Excellent</div>
+<form id="surveyForm">
+<div class="q">
+<h3>1. Accountability</h3>
+<div>How consistently do you take ownership for your commitments, decisions, and follow-through at work?</div>
+<div class="scale" data-q="q1"></div>
+</div>
+<div class="q">
+<h3>2. Assertiveness and Self-Confidence</h3>
+<div>How confident are you in expressing your views, needs, and boundaries clearly in professional situations?</div>
+<div class="scale" data-q="q2"></div>
+</div>
+<div class="q">
+<h3>3. Difficult Conversations and Conflict</h3>
+<div>How effectively do you manage tension, disagreement, or uncomfortable conversations with others?</div>
+<div class="scale" data-q="q3"></div>
+</div>
+<div class="q">
+<h3>4. Active Listening and Clarity</h3>
+<div>How well do you listen carefully, ask useful questions, and make sure others feel understood?</div>
+<div class="scale" data-q="q4"></div>
+</div>
+<div class="q">
+<h3>5. Communication Clarity</h3>
+<div>How effectively do you communicate ideas clearly through speaking, writing, or everyday interactions?</div>
+<div class="scale" data-q="q5"></div>
+</div>
+<div class="q">
+<h3>6. Presentation Impact</h3>
+<div>How confident are you in presenting ideas in a way that engages and influences an audience?</div>
+<div class="scale" data-q="q6"></div>
+</div>
+<div class="q">
+<h3>7. Meeting Effectiveness</h3>
+<div>How effectively do you contribute to meetings, brainstorming sessions, and group discussions?</div>
+<div class="scale" data-q="q7"></div>
+</div>
+<div class="q">
+<h3>8. Customer Orientation</h3>
+<div>How effectively do you understand, anticipate, and respond to customer or stakeholder needs?</div>
+<div class="scale" data-q="q8"></div>
+</div>
+<div class="q">
+<h3>9. Handling Objections and Dissatisfaction</h3>
+<div>How comfortable are you managing complaints, objections, or dissatisfied customers constructively?</div>
+<div class="scale" data-q="q9"></div>
+</div>
+<div class="q">
+<h3>10. Curiosity and Learning Agility</h3>
+<div>How actively do you ask questions, explore ideas, and learn from unfamiliar situations or people?</div>
+<div class="scale" data-q="q10"></div>
+</div>
+<div class="q">
+<h3>11. Emotional Intelligence</h3>
+<div>How well do you understand and manage your own emotions and respond appropriately to the emotions of others?</div>
+<div class="scale" data-q="q11"></div>
+</div>
+<div class="q">
+<h3>12. Negotiation</h3>
+<div>How confident are you in negotiating outcomes that protect relationships while creating value for all sides?</div>
+<div class="scale" data-q="q12"></div>
+</div>
+<div class="q">
+<h3>13. Networking</h3>
+<div>How actively do you build and maintain useful professional relationships and networks?</div>
+<div class="scale" data-q="q13"></div>
+</div>
+<div class="q">
+<h3>14. Cross-Cultural Collaboration</h3>
+<div>How effectively do you work with colleagues or stakeholders from different cultures, backgrounds, and working styles?</div>
+<div class="scale" data-q="q14"></div>
+</div>
+<div class="q">
+<h3>15. Persuasion and Influence</h3>
+<div>How effectively do you influence others to support your ideas, recommendations, or decisions?</div>
+<div class="scale" data-q="q15"></div>
+</div>
+<div class="q">
+<h3>16. Teamwork and Collaboration</h3>
+<div>How effectively do you collaborate with others to achieve shared outcomes, especially in distributed or hybrid work?</div>
+<div class="scale" data-q="q16"></div>
+</div>
+<div class="q">
+<h3>17. Critical Thinking</h3>
+<div>How confident are you in analyzing information, challenging assumptions, and identifying weak reasoning?</div>
+<div class="scale" data-q="q17"></div>
+</div>
+<div class="q">
+<h3>18. Creativity and Design Thinking</h3>
+<div>How comfortable are you generating new ideas, framing problems creatively, and testing practical solutions?</div>
+<div class="scale" data-q="q18"></div>
+</div>
+<div class="q">
+<h3>19. Decision-Making</h3>
+<div>How effectively do you evaluate options and make sound, timely decisions with others when needed?</div>
+<div class="scale" data-q="q19"></div>
+</div>
+<div class="q">
+<h3>20. Complex Problem Solving</h3>
+<div>How well do you handle problems with multiple variables, uncertainty, or competing priorities?</div>
+<div class="scale" data-q="q20"></div>
+</div>
+<div class="q">
+<h3>21. Productivity and Time Management</h3>
+<div>How effectively do you manage your time, focus, workload, and competing demands?</div>
+<div class="scale" data-q="q21"></div>
+</div>
+<div class="q">
+<h3>22. Remote and Hybrid Working</h3>
+<div>How effectively do you work, collaborate, and stay organized in remote or hybrid environments?</div>
+<div class="scale" data-q="q22"></div>
+</div>
+<div class="q">
+<h3>23. Career Growth and New Roles</h3>
+<div>How proactively do you build your career direction, develop new capabilities, and adapt to role transitions?</div>
+<div class="scale" data-q="q23"></div>
+</div>
+<div class="q">
+<h3>24. Self-Knowledge and Reflection</h3>
+<div>How well do you understand your strengths, motivators, growth areas, and patterns of behavior?</div>
+<div class="scale" data-q="q24"></div>
+</div>
+<div class="q">
+<h3>25. Wellbeing and Resilience</h3>
+<div>How well do you maintain personal wellbeing, mental balance, and resilience under work pressure?</div>
+<div class="scale" data-q="q25"></div>
+</div>
+<button class="btn" type="submit">Generate Full Skill Report</button>
+<div id="warn" class="warn">Please answer all 25 questions.</div>
+</form>
+<div id="result" class="result">
+<h2>Full Skill Report</h2>
+<div id="scoreSummary"></div>
+
+<div class="section-title"><strong>Report Summary</strong></div>
+<div class="summary-grid">
+<div class="summary-card"><strong>Highest Confidence Areas</strong><div id="highestAreas"></div></div>
+<div class="summary-card"><strong>Top Priority Areas</strong><div id="priorityAreas"></div></div>
+<div class="summary-card"><strong>Recommended Learning Intensity</strong><div id="learningIntensity"></div></div>
+</div>
+<div class="section-title"><strong>All 25 Skills Scored</strong></div>
+<table id="profileTable">
+<thead>
+<tr><th>Capability Area</th><th>Rating</th><th>Level</th><th>Mapped Skill Sets</th></tr>
+</thead>
+<tbody></tbody>
+</table>
+<div class="section-title"><strong>Priority Skill Sets</strong></div>
+<div id="skillSets"></div>
+<div class="section-title"><strong>Recommended Courses</strong></div>
+<div id="courseBuckets"></div>
+<div class="section-title"><strong>Save or Share Your Results</strong></div>
+<div class="actions">
+<button type="button" class="btn secondary" id="saveBrowserBtn">Save in Browser</button>
+<button type="button" class="btn secondary" id="downloadBtn">Download Results</button>
+<button type="button" class="btn secondary" id="emailBtn">Email Results</button>
+<button type="button" class="btn secondary" id="pdfBtn">Save as PDF</button>
+</div>
+<div id="saveMessage" class="save-message"></div>
+</div>
+</div>
+<script>
+   const questions = [{"id": "q1", "title": "Accountability", "prompt": "How consistently do you take ownership for your commitments, decisions, and follow-through at work?", "skills": ["Accountability"]}, {"id": "q2", "title": "Assertiveness and Self-Confidence", "prompt": "How confident are you in expressing your views, needs, and boundaries clearly in professional situations?", "skills": ["Assertiveness and Self-Confidence"]}, {"id": "q3", "title": "Difficult Conversations and Conflict", "prompt": "How effectively do you manage tension, disagreement, or uncomfortable conversations with others?", "skills": ["Conflict Resolution", "Empathy and Emotional Intelligence"]}, {"id": "q4", "title": "Active Listening and Clarity", "prompt": "How well do you listen carefully, ask useful questions, and make sure others feel understood?", "skills": ["Interpersonal Communication"]}, {"id": "q5", "title": "Communication Clarity", "prompt": "How effectively do you communicate ideas clearly through speaking, writing, or everyday interactions?", "skills": ["Interpersonal Communication", "Presentation Skills"]}, {"id": "q6", "title": "Presentation Impact", "prompt": "How confident are you in presenting ideas in a way that engages and influences an audience?", "skills": ["Presentation Skills", "Storytelling"]}, {"id": "q7", "title": "Meeting Effectiveness", "prompt": "How effectively do you contribute to meetings, brainstorming sessions, and group discussions?", "skills": ["Contribute Effectively to Meetings"]}, {"id": "q8", "title": "Customer Orientation", "prompt": "How effectively do you understand, anticipate, and respond to customer or stakeholder needs?", "skills": ["Customer Centricity"]}, {"id": "q9", "title": "Handling Objections and Dissatisfaction", "prompt": "How comfortable are you managing complaints, objections, or dissatisfied customers constructively?", "skills": ["Customer Centricity", "Empathy and Emotional Intelligence"]}, {"id": "q10", "title": "Curiosity and Learning Agility", "prompt": "How actively do you ask questions, explore ideas, and learn from unfamiliar situations or people?", "skills": ["Curiosity", "Adaptability"]}, {"id": "q11", "title": "Emotional Intelligence", "prompt": "How well do you understand and manage your own emotions and respond appropriately to the emotions of others?", "skills": ["Empathy and Emotional Intelligence"]}, {"id": "q12", "title": "Negotiation", "prompt": "How confident are you in negotiating outcomes that protect relationships while creating value for all sides?", "skills": ["Negotiation"]}, {"id": "q13", "title": "Networking", "prompt": "How actively do you build and maintain useful professional relationships and networks?", "skills": ["Networking"]}, {"id": "q14", "title": "Cross-Cultural Collaboration", "prompt": "How effectively do you work with colleagues or stakeholders from different cultures, backgrounds, and working styles?", "skills": ["Intercultural Collaboration"]}, {"id": "q15", "title": "Persuasion and Influence", "prompt": "How effectively do you influence others to support your ideas, recommendations, or decisions?", "skills": ["Persuasion and Influence"]}, {"id": "q16", "title": "Teamwork and Collaboration", "prompt": "How effectively do you collaborate with others to achieve shared outcomes, especially in distributed or hybrid work?", "skills": ["Teamwork & Collaboration", "Work Remotely"]}, {"id": "q17", "title": "Critical Thinking", "prompt": "How confident are you in analyzing information, challenging assumptions, and identifying weak reasoning?", "skills": ["Critical Thinking"]}, {"id": "q18", "title": "Creativity and Design Thinking", "prompt": "How comfortable are you generating new ideas, framing problems creatively, and testing practical solutions?", "skills": ["Creativity", "Design Thinking"]}, {"id": "q19", "title": "Decision-Making", "prompt": "How effectively do you evaluate options and make sound, timely decisions with others when needed?", "skills": ["Decision-Making", "Critical Thinking"]}, {"id": "q20", "title": "Complex Problem Solving", "prompt": "How well do you handle problems with multiple variables, uncertainty, or competing priorities?", "skills": ["Complex Problem Solving"]}, {"id": "q21", "title": "Productivity and Time Management", "prompt": "How effectively do you manage your time, focus, workload, and competing demands?", "skills": ["Productivity"]}, {"id": "q22", "title": "Remote and Hybrid Working", "prompt": "How effectively do you work, collaborate, and stay organized in remote or hybrid environments?", "skills": ["Work Remotely"]}, {"id": "q23", "title": "Career Growth and New Roles", "prompt": "How proactively do you build your career direction, develop new capabilities, and adapt to role transitions?", "skills": ["Grow Your Career", "Succeed in a New Job"]}, {"id": "q24", "title": "Self-Knowledge and Reflection", "prompt": "How well do you understand your strengths, motivators, growth areas, and patterns of behavior?", "skills": ["Self-Knowledge", "Mindfulness"]}, {"id": "q25", "title": "Wellbeing and Resilience", "prompt": "How well do you maintain personal wellbeing, mental balance, and resilience under work pressure?", "skills": ["Personal Wellbeing", "Mindfulness"]}];
+   const coursesBySkill = {"Accountability": ["Develop a Fuller Sense of Accountability", "Be a Master of Your Own Accountability"], "Assertiveness and Self-Confidence": ["Be Assertive", "Build Self-Confidence Through Assertiveness", "Boost Your Self-Esteem", "Be Assertive in Difficult Situations", "Develop Your Self-Esteem in Work Relationships"], "Interpersonal Communication": ["Be Aware of the Influence of Perception Filters", "Hone Your Active Listening", "Ask Questions", "Make Effective Requests", "Congratulate a Colleague", "Improve Listening and Clarity Through Rephrasing", "Meet Communicative Needs at Work Through Rephrasing", "Communicate Effectively Through Email", "Adapt Your Communication to Others' Styles", "Master the Principles of Communication", "Communicate Well on Various Levels"], "Presentation Skills": ["Prepare a Public Speech", "Prepare to Connect with an Audience", "Use Visual Aids Effectively in Presentations"], "Contribute Effectively to Meetings": ["Approach Meetings with the Right Mindset", "Get the Most Out of Group Brainstorming", "Structure Meetings with Purpose", "Run and Contribute to Quality Meetings", "Improve Your Meetings with a Few Quick Tips"], "Customer Centricity": ["Amaze Your Customers", "Manage Client Dissatisfaction", "Improve Customer Service Quality", "Tailor Service to Your Target Customers", "Create Magic Customer Service Moments", "Create a Winning First Impression with Customers", "Better Serve Customers through Cross-Selling and Up-Selling", "Mentor Staff in Improving Client Relationships", "Treat Your Staff Like Your Clients", "Own the Customer Experience", "Deal with Clients' Objections", "Improve Service Quality for Ongoing Clients", "Discover Your Client's Needs and Motivations", "Inspire Trust in Customers", "Ensure a Client-Oriented Staff"], "Curiosity": ["Break Past the Roadblocks to Curiosity", "Harness Curiosity for Productivity and Engagement with Colleagues", "Bring Curiosity into Leadership"], "Conflict Resolution": ["Resolve Tension", "Understand the Process of Conflict", "Be Aware of the Role You Play in a Conflict"], "Design Thinking": ["Harness Design Thinking", "Organize an Ideation Session", "Troubleshoot a Product Problem"], "Empathy and Emotional Intelligence": ["Understand Emotional Intelligence", "Deal with Your Own Emotions", "Deal with Others' Emotions", "Develop a Positive Outlook", "Harness Empathy", "Craft Effective Messages with Empathy", "Boost Productivity by Understanding Feelings and Needs", "Channel Frustrations Through Empathy", "Connect to Others for More Effective Work Relationships", "Create Meetings That Matter", "Handle Interpersonal Difficulties in the Workplace with Empathy", "Manage Challenging Conversations", "Go Fast Versus Go Far with True Empathy", "Make Effective Group Decisions", "Handle Unhappy Clients with Empathy"], "Negotiation": ["Discover Your Negotiating Style", "Maintain a Good Working Relationship When Negotiating", "Leverage the Mutual Gains Approach", "Prepare for Negotiations", "Negotiate for the Benefit of Both Parties"], "Networking": ["Maximize the Potential of an Organized Network", "Harness Your Informal Network", "Improve your Connectional Intelligence"], "Intercultural Collaboration": ["Communicate Remotely Across Cultures", "Identify the Risks and Opportunities of Multicultural Teams", "Explore Cultures' Impacts on Professional Relationships", "Understand Cultures' Influences on Individual Perspectives and Behaviors", "Accept Varied Cultural Approaches to Work", "Recognize the Seven Dimensions of Cultural Difference", "Reconcile Cultural Differences", "Deal with Culture Shock", "Build Trust Across Cultures"], "Persuasion and Influence": ["Make Your Point More Effectively", "Build Your Reputation", "Shape Your Message to Your Audience"], "Storytelling": ["Master the Elements of Storytelling", "Structure Compelling Stories", "Deliver Presentations with Impact"], "Teamwork & Collaboration": ["Embrace Shared Leadership", "Boost Collaboration—Even and Especially in Remote Working"], "Critical Thinking": ["Understand Critical Thinking in the Tech Age", "Set a Foundation for Critical Thinking", "Strengthen Your Arguments Through Reasoning", "Spot Holes in Reasoning", "Take an Open Approach to Others' Arguments", "Express Ideas Persuasively", "Manage Your Time and Attention for Clearer Thinking"], "Adaptability": ["Take Up the Challenge of Change"], "Creativity": ["Let Creative Ideas Emerge", "Ask the Right Creative Questions", "Boost Group Creativity", "Take a Creative Approach", "Boost Your Thinking Through Mind Maps", "Get Ideas Flowing from Your Team", "Help Your Staff Implement Their Ideas"], "Decision-Making": ["Make Decisions Collaboratively"], "Self-Knowledge": ["Identify Your Professional Strengths—and What You Need to Improve", "Reap the Benefits of Metacognition", "Reflect on Who You Are", "Identify and Leverage Your Motivators", "Maximize Your Potential"], "Mindfulness": ["Understand Mindfulness", "Achieve Mindful Awareness and Acknowledgement", "Work Toward Mindful Acceptance", "Enable Progress by Letting Go", "Approach Life with Beginner’s Mind", "Achieve Stronger Focus and Engagement", "Be Non-Judgemental", "Practice Mindful Patience"], "Complex Problem Solving": ["Grasp Complexity", "Adopt the Right Mindset for Solving Complex Problems", "Build a Reliable Process for Solving Complex Problems"], "Work Remotely": ["Work From Home", "Adapt to Remote Working", "Understand Hybrid Ways of Working", "Set Yourself up for Success in Hybrid Working", "Ensure Seamless Collaboration at a Distance", "Meet Effectively in a Hybrid Workplace"], "Productivity": ["Improve Your Time Management", "Recognize the Factors in Time-Wasting", "Plan Your Work Effectively", "Achieve More Productive Focus in Your Workday", "Organize Your Time Efficiently", "Handle the Demands that Others Make on Your Time"], "Grow Your Career": ["Take Stock of Your Professional Life and Possibilities", "Dream Up Your Own Career Path", "Connect Your Past to Your Goals through Narrative", "Reintroduce the New Professional You", "Harness Learning for Continuous Advancement", "Learn from Failures and Successes", "Use Feedback to Boost Your Career Growth", "Acquire a Competitive Skillset for a Changing World", "Seize Opportunities for Digital Learning"], "Succeed in a New Job": ["Prepare Effectively for a New Role", "Make a Positive Impression on Work Colleagues", "Deliver Results as You Take on a New Job", "Build Positive Workplace Relationships", "Boost Your Career Through Strong Day-to-Day Performance", "Manage Your Career", "Succeed in an Internship: The Unspoken Rules"], "Personal Wellbeing": ["Improve Your Wellbeing", "Manage Your Work-Life Balance", "Understand Mental Health and Wellbeing in the Workplace", "Look After Your Physical and Mental Wellbeing at Work", "Manage Your Workplace Mental Health and Deal with Crises", "Deal with Workplace Bullying, Harassment, and Sexual Assault"]};
+   function level(score) {
+     if (score <= 2) return "Development Needed";
+     if (score === 3) return "Intermediate";
+     return "Strong";
+   }
+   function intensityText(score) {
+     if (score <= 2) return "High";
+     if (score === 3) return "Moderate";
+     return "Light";
+   }
+   function sortSkillsForScore(score, skills) {
+     if (skills.length <= 1) return skills;
+     if (score <= 2) return skills;
+     if (score === 3) return skills.slice(0, 2);
+     return skills.slice(0, 1);
+   }
+   function renderScale() {
+     document.querySelectorAll('.scale').forEach(div => {
+       const q = div.getAttribute('data-q');
+       for (let i = 1; i <= 5; i++) {
+         const label = document.createElement('label');
+         label.className = 'option';
+         label.innerHTML = '<input type="radio" name="' + q + '" value="' + i + '"> ' + i;
+         div.appendChild(label);
+       }
+     });
+   }
+   function unique(arr) {
+     return [...new Set(arr)];
+   }
+   function pickCourses(score, courses) {
+     if (score <= 2) return courses.slice(0, Math.min(4, courses.length));
+     if (score === 3) return courses.slice(0, Math.min(2, courses.length));
+     return courses.slice(0, Math.min(1, courses.length));
+   }
+   function buildResultsText() {
+     const scoreText = document.getElementById('scoreSummary') ? document.getElementById('scoreSummary').innerText.replace(/\s+/g, ' ').trim() : '';
+     const rows = Array.from(document.querySelectorAll('#profileTable tbody tr')).map(row => Array.from(row.children).map(td => td.innerText.trim()));
+     const buckets = Array.from(document.querySelectorAll('#courseBuckets .bucket')).map(bucket => {
+       const heading = bucket.querySelector('strong') ? bucket.querySelector('strong').innerText.trim() : '';
+       const skills = Array.from(bucket.querySelectorAll('.pill')).map(el => el.innerText.trim());
+       const courses = Array.from(bucket.querySelectorAll('li')).map(el => el.innerText.trim());
+       return { heading, skills, courses };
+     });
+     let lines = [];
+     lines.push("Professional Skills Diagnostic");
+     lines.push("");
+     lines.push(scoreText);
+     lines.push("");
+     lines.push("All 25 Skills Scored:");
+     rows.forEach(r => lines.push("- " + r[0] + " | " + r[1] + " | " + r[2] + " | " + r[3]));
+     lines.push("");
+     lines.push("Recommended Courses:");
+     buckets.forEach(b => {
+       lines.push("");
+       lines.push(b.heading);
+       if (b.skills.length) lines.push("Skill Sets: " + b.skills.join(", "));
+       b.courses.forEach(c => lines.push("- " + c));
+     });
+     return lines.join("\n");
+   }
+   function saveResultsInBrowser() {
+     localStorage.setItem("professional_skills_diagnostic_results_html", document.getElementById('result').innerHTML);
+     localStorage.setItem("professional_skills_diagnostic_results_text", buildResultsText());
+     document.getElementById('saveMessage').innerText = "Results saved in this browser on " + new Date().toLocaleString();
+   }
+   function downloadResults() {
+     window.print();
+   }
+   function emailResults() {
+     const subject = encodeURIComponent("Professional Skills Diagnostic Results");
+     const body = encodeURIComponent(buildResultsText() + "\n\nTo send a PDF, use Save as PDF first and attach it.");
+     window.location.href = "mailto:?subject=" + subject + "&body=" + body;
+   }
+   function saveAsPdf() {
+     window.print();
+   }
+   document.getElementById('saveBrowserBtn').onclick = saveResultsInBrowser;
+   document.getElementById('downloadBtn').onclick = downloadResults;
+   document.getElementById('emailBtn').onclick = emailResults;
+   document.getElementById('pdfBtn').onclick = saveAsPdf;
+   document.getElementById('surveyForm').addEventListener('submit', function(e) {
+     e.preventDefault();
+     const scores = {};
+     for (const q of questions) {
+       const selected = document.querySelector('input[name="' + q.id + '"]:checked');
+       if (!selected) {
+         document.getElementById('warn').style.display = 'block';
+         return;
+       }
+       scores[q.id] = parseInt(selected.value, 10);
+     }
+     document.getElementById('warn').style.display = 'none';
+     const total = Object.values(scores).reduce((a,b) => a+b, 0);
+     const avg = (total / questions.length).toFixed(1);
+     const profileBody = document.querySelector('#profileTable tbody');
+     profileBody.innerHTML = '';
+     let allPrioritySkills = [];
+     let courseBucketsHtml = '';
+     let ranked = [];
+     questions.forEach(q => {
+       const score = scores[q.id];
+       const mappedSkills = q.skills;
+       const chosenSkills = sortSkillsForScore(score, mappedSkills);
+       allPrioritySkills.push(...chosenSkills);
+       ranked.push({ title: q.title, score: score, intensity: intensityText(score) });
+       const row = document.createElement('tr');
+       row.innerHTML = '<td>' + q.title + '</td><td>' + score + '/5</td><td>' + level(score) + '</td><td>' + mappedSkills.join(', ') + '</td>';
+       profileBody.appendChild(row);
+       let courses = [];
+       chosenSkills.forEach(skill => {
+         courses.push(...pickCourses(score, coursesBySkill[skill] || []));
+       });
+       courses = unique(courses);
+       courseBucketsHtml += '<div class="bucket">';
+       courseBucketsHtml += '<strong>' + q.title + '</strong>';
+       courseBucketsHtml += '<div style="margin-top:8px;">' + chosenSkills.map(skill => '<span class="pill">' + skill + '</span>').join(' ') + '</div>';
+       courseBucketsHtml += '<ul>' + courses.map(c => '<li>' + c + '</li>').join('') + '</ul>';
+       courseBucketsHtml += '</div>';
+     });
+
+     ranked.sort((a,b) => a.score - b.score);
+     const priority = ranked.slice(0, 5);
+     const highest = [...ranked].sort((a,b) => b.score - a.score).slice(0, 5);
+     const highCount = ranked.filter(x => x.score <= 2).length;
+     const medCount = ranked.filter(x => x.score === 3).length;
+     const lightCount = ranked.filter(x => x.score >= 4).length;
+     document.getElementById('highestAreas').innerHTML = highest.map(x => '<div>' + x.title + ' — ' + x.score + '/5</div>').join('');
+     document.getElementById('priorityAreas').innerHTML = priority.map(x => '<div>' + x.title + ' — ' + x.score + '/5</div>').join('');
+     document.getElementById('learningIntensity').innerHTML =
+       '<div>High focus areas: ' + highCount + '</div>' +
+       '<div>Moderate focus areas: ' + medCount + '</div>' +
+       '<div>Light reinforcement areas: ' + lightCount + '</div>';
+     allPrioritySkills = unique(allPrioritySkills);
+     document.getElementById('scoreSummary').innerHTML = '<p><strong>Total Score:</strong> ' + total + '/' + (questions.length * 5) + ' &nbsp; | &nbsp; <strong>Average:</strong> ' + avg + '/5</p>';
+     document.getElementById('skillSets').innerHTML = allPrioritySkills.map(s => '<span class="pill">' + s + '</span>').join('');
+     document.getElementById('courseBuckets').innerHTML = courseBucketsHtml;
+     document.getElementById('result').style.display = 'block';
+     document.getElementById('result').scrollIntoView();
+   });
+   renderScale();
+</script>
+</body>
+</html>
